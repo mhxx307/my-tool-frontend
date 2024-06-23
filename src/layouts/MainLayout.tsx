@@ -32,6 +32,14 @@ function Header() {
                             Image Download
                         </Link>
                     </li>
+                    <li>
+                        <Link
+                            to="/shorten-url"
+                            className="text-white hover:underline"
+                        >
+                            URL Shortener
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>
