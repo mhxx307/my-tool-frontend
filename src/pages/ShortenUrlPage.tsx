@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ShortenUrlPage: React.FC = () => {
     const [originalUrl, setOriginalUrl] = useState('');
@@ -102,6 +103,10 @@ const ShortenUrlPage: React.FC = () => {
                     </p>
                 </div>
             )}
+
+            <Link to="/statistics" className="mt-8 text-blue-500 underline">
+                View URL Statistics
+            </Link>
         </div>
     );
 };
