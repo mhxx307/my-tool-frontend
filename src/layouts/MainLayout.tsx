@@ -40,6 +40,14 @@ function Header() {
                             URL Shortener
                         </Link>
                     </li>
+                    <li>
+                        <Link
+                            to="/code-beautifier"
+                            className="text-white hover:underline"
+                        >
+                            Code Beautifier
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>

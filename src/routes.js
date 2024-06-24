@@ -4,6 +4,7 @@ import VideoDownloadPage from './pages/VideoDownloadPage';
 import ImageDownload from './pages/ImageDownload';
 import ShortenUrlPage from './pages/ShortenUrlPage';
 import UrlStatistics from './pages/UrlStatisticsPage';
+import CodeBeautifier from './pages/CodeBeauty';
 
 const routes = [
     {
@@ -39,6 +40,15 @@ const routes = [
         element: (
             <MainLayout>
                 <UrlStatistics />
+            </MainLayout>
+        ),
+    },
+    {
+        path: '/code-beautifier',
+        index: true,
+        element: (
+            <MainLayout>
+                <CodeBeautifier />
             </MainLayout>
         ),
     },
