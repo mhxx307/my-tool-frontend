@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { js_beautify, html, css } from 'js-beautify';
+import { format } from 'sql-formatter';
+import jsonBeautify from 'json-beautify';
 import { saveAs } from 'file-saver';
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { html as htmlLang } from '@codemirror/lang-html';
 import { css as cssLang } from '@codemirror/lang-css';
+import { json as jsonLang } from '@codemirror/lang-json';
 import { oneDark } from '@codemirror/theme-one-dark';
 
 const CodeBeautifier: React.FC = () => {
@@ -23,6 +26,15 @@ const CodeBeautifier: React.FC = () => {
         beautifiedCode = html(inputCode, { indent_size: indentSize });
       } else if (language === 'css') {
         beautifiedCode = css(inputCode, { indent_size: indentSize });
+      } else if (language === 'json') {
+        beautifiedCode = jsonBeautify(JSON.parse(inputCode), null as any, indentSize, 100);
+      } else if (language === 'sql') {
+        beautifiedCode = format(inputCode,  {
+          language: 'mysql',
+          tabWidth: indentSize,
+          keywordCase: 'upper',
+          linesBetweenQueries: 2,
+        });
       }
       setOutputCode(beautifiedCode);
       setError('');
@@ -52,6 +64,9 @@ const CodeBeautifier: React.FC = () => {
     if (language === 'javascript') return javascript();
     if (language === 'html') return htmlLang();
     if (language === 'css') return cssLang();
+    if (language === 'json') return jsonLang();
+    // For SQL, we can use javascript mode as there's no direct support
+    if (language === 'sql') return javascript();
     return javascript(); // Default to JavaScript
   };
 
@@ -68,6 +83,8 @@ const CodeBeautifier: React.FC = () => {
           <option value="javascript">JavaScript</option>
           <option value="html">HTML</option>
           <option value="css">CSS</option>
+          <option value="json">JSON</option>
+          <option value="sql">SQL</option>
         </select>
         <label className="ml-4 mr-2">Indent Size:</label>
         <input
