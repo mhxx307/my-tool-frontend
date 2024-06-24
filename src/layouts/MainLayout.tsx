@@ -48,6 +48,14 @@ function Header() {
                             Code Beautifier
                         </Link>
                     </li>
+                    <li>
+                        <Link
+                            to="/meme-edit"
+                            className="text-white hover:underline"
+                        >
+                            Meme Generator
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>

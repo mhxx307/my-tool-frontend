@@ -5,6 +5,7 @@ import ImageDownload from './pages/ImageDownload';
 import ShortenUrlPage from './pages/ShortenUrlPage';
 import UrlStatistics from './pages/UrlStatisticsPage';
 import CodeBeautifier from './pages/CodeBeauty';
+import MemeEditPage from './pages/MemeEditPage';
 
 const routes = [
     {
@@ -49,6 +50,15 @@ const routes = [
         element: (
             <MainLayout>
                 <CodeBeautifier />
+            </MainLayout>
+        ),
+    },
+    {
+        path: '/meme-edit',
+        index: true,
+        element: (
+            <MainLayout>
+                <MemeEditPage />
             </MainLayout>
         ),
     },
